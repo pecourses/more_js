@@ -52,3 +52,40 @@ try {
 } catch (err) {
   console.log("Second catch", err);
 }
+
+function toJadenCase(string) {
+  return string
+    .split(" ")
+    .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+    .join(" ");
+}
+
+toJadenCase("after danger code declaration");
+
+const db = [
+  {
+    name: "Teset Testovich",
+    age: 18,
+  },
+  {
+    name: "Tset Testovna",
+    age: 28,
+  },
+];
+
+function getPropertyValues(db, prop) {
+  const result = [];
+
+  for (const cortege of db) {
+    result.push(cortege[prop]);
+  }
+
+  return result;
+}
+
+function getPropertyValues2(db, prop) {
+  return db.map((cortege) => cortege[prop]);
+}
+
+console.log(getPropertyValues(db, "age"));
+console.log(getPropertyValues2(db, "age"));

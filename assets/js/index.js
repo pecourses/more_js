@@ -215,3 +215,15 @@ const myArr = new MyArray(
   "test5",
   [[[[[5]]]]]
 );
+
+let array = ['letter','text'];
+let res = [];
+for(const word of array){
+  res.push(word.charAt(0)) // correct!
+}
+
+let array1= ['letter','text'];
+let res1 = [];
+for(const word of array){
+  res.push(word).charAt(0) // wrong!
+}
