@@ -175,15 +175,11 @@ function ArrayMethods() {
 
     for (let i = 0; i < this.length; i++) {
       if (Array.isArray(this[i])) {
-
         const buffer = this[i].flat(depth - 1);
-        
+
         newArr = newArr.concat(buffer);
-
       } else if (this[i] !== undefined) {
-
         newArr.push(this[i]);
-
       }
     }
 
@@ -216,14 +212,91 @@ const myArr = new MyArray(
   [[[[[5]]]]]
 );
 
-let array = ['letter','text'];
+let array = ["letter", "text"];
 let res = [];
-for(const word of array){
-  res.push(word.charAt(0)) // correct!
+for (const word of array) {
+  res.push(word.charAt(0)); // correct!
 }
 
-let array1= ['letter','text'];
+/* let array1 = ["letter", "text"];
 let res1 = [];
-for(const word of array){
-  res.push(word).charAt(0) // wrong!
+for (const word of array) {
+  res.push(word).charAt(0); // wrong!
+}
+ */
+function toJadenCase(string) {
+  return string
+    .split(" ")
+    .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+    .join(" ");
+}
+
+toJadenCase("after danger, code, declaration");
+
+const db = [
+  {
+    name: "Teset Testovich",
+    age: 18,
+  },
+  {
+    name: "Tset Testovna",
+    age: 28,
+  },
+];
+
+function getPropertyValues(db, prop) {
+  const result = [];
+
+  for (const cortege of db) {
+    result.push(cortege[prop]);
+  }
+
+  return result;
+}
+
+function getPropertyValues2(db, prop) {
+  return db.map((cortege) => cortege[prop]);
+}
+
+console.log(getPropertyValues(db, "age"));
+console.log(getPropertyValues2(db, "age"));
+
+console.log(getTruthlyArray([1, 2, 23, 4, 5, 6, 0, false, null, , , , , NaN]));
+
+function getTruthlyArray(array) {
+  const result = [];
+
+  for (const item of array) {
+    if (item) {
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+console.log(getTruthlyArray2([1, 2, 23, 4, 5, 6, 0, false, null, , , , , NaN]));
+
+function getTruthlyArray2(array) {
+  return array.filter((item) => item);
+}
+
+function removeItem(array, prop) {} // similar
+
+console.log(getMaxLengthWord("text this return length"));
+
+function getMaxLengthWord(string) {
+  return Math.max(...string.split(" ").map((word) => word.length));
+}
+
+const arreyWithNestedNumArrays = [
+  [1, 2, 3, 9],
+  [5, 18, 110, 12],
+  [3, 5, 129, 5],
+  [28, 99, 2, 34],
+];
+
+console.log(getMaxValuesFromSubArrays(arreyWithNestedNumArrays));
+
+function getMaxValuesFromSubArrays(array) {
+  return array.map((subArray) => Math.max(...subArray));
 }
